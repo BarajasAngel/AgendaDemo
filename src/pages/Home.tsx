@@ -73,7 +73,7 @@ export default function Home() {
       <div>
         <p className="text-xs text-slate-400 font-medium capitalize">{today}</p>
         <h1 className="text-2xl font-semibold text-slate-900 mt-0.5 tracking-tight">
-          Buenos días, Jorge
+          Buenos días, Angel
         </h1>
         <p className="text-sm text-slate-400 mt-0.5">
           {todayEvents.length === 1 ? '1 evento pendiente hoy' : `${todayEvents.length} eventos pendientes hoy`}
