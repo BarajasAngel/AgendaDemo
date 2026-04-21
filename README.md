@@ -76,7 +76,7 @@ El proyecto ya incluye:
 - Navegación mobile-first con drawer "Más".
 - Pantallas funcionales para agenda, documentos, mapas, social, páginas, notificaciones y favoritos.
 - Favoritos persistentes con `localStorage`.
-- Notificaciones demo con badge de no leídas, botón "Probar notificación", historial interno y fallback tipo toast.
+- Notificaciones demo con badge de no leídas, botón "Probar notificación", historial interno, fallback tipo toast y disparo móvil vía `registration.showNotification()`.
 - PWA instalable con app shell cacheado.
 - Build limpio para Cloudflare Pages.
 - Responsive básico para mobile, tablet y desktop.

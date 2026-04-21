@@ -68,18 +68,28 @@ export function NotificationsProvider({ children }: { children: ReactNode }) {
     setPermission(result)
   }, [])
 
-  const sendDemo = useCallback(() => {
+  const sendDemo = useCallback(async () => {
     const demo = nextDemoNotification()
     const notif = addNotification({ title: demo.title, body: demo.body, type: demo.type })
+    const diagnostics = await NotifAPI.getNotificationDemoDiagnostics()
+    const needsInternalFallback =
+      !diagnostics.notificationApiAvailable ||
+      !diagnostics.serviceWorkerApiAvailable ||
+      !diagnostics.serviceWorkerReady ||
+      diagnostics.permission !== 'granted'
 
-    if (permission === 'granted') {
-      // Fire native browser notification
-      NotifAPI.sendNativeNotification(demo.title, { body: demo.body })
-    } else {
-      // Show in-app toast fallback
+    if (needsInternalFallback) {
       setToast(notif)
       setTimeout(() => setToast(null), 5000)
+      console.info('[Notifications demo] fallback interno:', true)
+      return
     }
+
+    console.info('[Notifications demo] fallback interno:', false)
+    await NotifAPI.sendServiceWorkerNotification(demo.title, {
+      body: demo.body,
+      tag: `sistema-agenda-demo-${notif.id}`,
+    }, diagnostics)
   }, [permission, addNotification])
 
   const markAsRead = useCallback((id: string) => {
