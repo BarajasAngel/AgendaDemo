@@ -1,0 +1,48 @@
+# dependencies
+node_modules/
+.claude/
+
+# build output
+dist/
+build/
+
+# local env files
+.env
+.env.*
+!.env.example
+
+# logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+
+# coverage
+coverage/
+
+# cache
+.cache/
+.parcel-cache/
+.eslintcache
+
+# local Cloudflare / Wrangler
+.wrangler/
+
+# PWA generated files if applicable
+dev-dist/
+
+#Instrucciones IA
+PROJECT_STATE.md
+DECISIONS.md
+CURRENT_TASK.md
